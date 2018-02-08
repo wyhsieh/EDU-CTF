@@ -1,7 +1,7 @@
 # Solution
 這題有明顯地format string漏洞，利用它可以leak出libc base address和.text section base address<br/>
 再用argv chain(```%11$p```和```%37$p```)可以對記憶體做任意讀寫 <br/>
-因此可以因此可以把放在stack上的迴圈index改成100，讓我們能夠做足夠多次的```printf```<br/>
+因此可以把放在stack上的迴圈index改成100，讓我們能夠做足夠多次的```printf```<br/>
 還有一個限制是我們用`%n`來寫記憶體的時候一次最多只能寫2個bytes，因為buffer的大小只有`0x10`這麼大 <br/>
 若是要一次寫4或8個bytes除了I/O會爆掉以外，組好的format string也會太長。<br/> <br/>
 
