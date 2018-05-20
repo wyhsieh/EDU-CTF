@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from pwn import *
 
+### Use argv chain to pwn
 host = 'csie.ctf.tw'
 port = 10136
 r = remote(host, port)
